@@ -15,7 +15,7 @@ class ThompsonSamplingLangevin:
         regularization_factor_mle,
         
     ):
-        """Langevin Sampling for NonContextual Prices and Promotions Experiments
+        """Thompson sampling use Langevin Dynamics with random initial exploration phase
 
         Args:
             tau (int): Number of initial exploration rounds
@@ -42,10 +42,10 @@ class ThompsonSamplingLangevin:
         """What price to play at the current state of the environment
 
         Args:
-            env (Environment):
+            env (Environment): customer response
         
         Returns:
-           prices and additional data
+            prices and additional data
         """
         if env.t < self.tau:
             p = torch.rand(self.K) * (env.model.u - env.model.el) + env.model.el
