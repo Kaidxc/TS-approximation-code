@@ -15,8 +15,8 @@ if rank==rank:
     start = time.time()
 
     # global parameters------------------------------------------------------
-    max_T = 20000
-    n_products = 9
+    max_T = 5000
+    n_products = 3
     batch_size = 200
     N_t = 50
     eta_scale = 0.01
@@ -24,9 +24,9 @@ if rank==rank:
     regularization_item = 1
     M = 5
     #------------------------------------------------------------------------
-    alphas_input = np.load(r"/home/ks4n19/MNL_langevin_pytorch/nielsen_data/nielsen_alphas_9.npy")[:9]
-    betas_input = -np.load(r"/home/ks4n19/MNL_langevin_pytorch/nielsen_data/nielsen_betas_9.npy")[:9]/32
-
+    alphas_input = np.ones(n_products)
+    betas_input = np.array([0.1,0.2,0.3])
+    
     alphas_true = nn.Parameter(torch.tensor(alphas_input,dtype=torch.float))
     betas_true = nn.Parameter(torch.tensor(betas_input,dtype=torch.float))
     
@@ -34,7 +34,7 @@ if rank==rank:
     env_model = MNLEnvironment(alphas_true, 
                                betas_true, 
                                el=0, 
-                               u=40, 
+                               u=30, 
                                T=max_T)
 
     ts_langevin = TSLangevin_uniform(
