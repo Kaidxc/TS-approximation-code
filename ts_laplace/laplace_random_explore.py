@@ -41,9 +41,9 @@ class ThompsonSamplingLaplace:
         """What price to play at the current state of the environment
 
         Args:
-            env (Environment): Environment (could be contextual or not)
+            env (Environment): customer response
         Returns:
-            tuple: A tuple of optimal action (price, promotion), and additional data
+            optimal action (price), and additional data
         """
         
         def hessian_for_sample(model, p):
