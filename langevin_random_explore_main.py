@@ -22,7 +22,7 @@ if rank==rank:
     start = time.time()
     # global parameters------------------------------------------------------
     max_T = 5000
-    tau = 1000 #initial exploration phase
+    tau = 10 #initial exploration phase
     n_products = 3
     batch_size = 200
     N_t = 50
