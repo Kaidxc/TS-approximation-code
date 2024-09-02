@@ -11,7 +11,7 @@ import torch
 import pandas as pd
 import torch.nn as nn
 from mnl_env import MNLEnvironment
-from laplace_ts import ThompsonSamplingLaplace
+from ts_laplace.laplace_random_explore import ThompsonSamplingLaplace
 from tqdm import tqdm
 from mpi4py import MPI
 
@@ -74,7 +74,7 @@ if rank==rank:
     df_laplace_temp = pd.DataFrame(d_laplace)
 
     results_laplace = pd.concat([results_laplace, df_laplace_temp], ignore_index=True)
-    results_laplace.to_csv(r"/home/ks4n19/MNL_langevin_pytorch/output_data_3products/laplace_random_varTau/B200/results_laplace_"+str(rank+20)+"_"+str(max_T)+"_"+str(tau)+".csv", index=False)
+    results_laplace.to_csv(r"_".csv", index=False)
     
     end = time.time()
     
