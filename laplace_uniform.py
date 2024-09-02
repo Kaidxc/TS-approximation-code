@@ -14,8 +14,7 @@ class TSLaplace_uniform:
         mle_steps,
         M,
     ):
-        """Thompson Sampling for NonContextual Prices and Promotions Experiments
-
+        """
         Args:
             tau (int): Number of initial exploration rounds
             exploration_rate (float): Multipicative factor on the normal distribution variance
@@ -49,9 +48,9 @@ class TSLaplace_uniform:
         """What price to play at the current state of the environment
 
         Args:
-            env (Environment): Environment (could be contextual or not)
+            env (Environment): Environment
         Returns:
-            tuple: A tuple of optimal action (price, promotion), and additional data
+            optimal action (price), and additional data
         """
         
         def hessian_for_sample(model, p):
