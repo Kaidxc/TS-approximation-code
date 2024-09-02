@@ -11,7 +11,7 @@ import torch
 import pandas as pd
 import torch.nn as nn
 from mnl_env import MNLEnvironment
-from langevin_ts import ThompsonSamplingLangevin
+from ts_langevin.laplace_random_explore import ThompsonSamplingLaplace
 from tqdm import tqdm
 from mpi4py import MPI
 
