@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 import torch.nn as nn
 from mnl_env import MNLEnvironment
-from langevin_normal import TSLangevin_normal
+from ts_langevin.langevin_normal import TSLangevin_normal
 from tqdm import tqdm
 from mpi4py import MPI
 
@@ -59,7 +59,7 @@ if rank==rank:
     df_langevin_temp = pd.DataFrame(d_langevin)
 
     results_langevin = pd.concat([results_langevin, df_langevin_temp], ignore_index=True)
-    results_langevin.to_csv(r"/home/ks4n19/mnl_pytorch_code/coffee_code/langevin_normal/B10/results_langevin_"+str(rank)+"T"+str(max_T)+"_B"+str(batch_size)+".csv", index=False)
+    results_langevin.to_csv(r"_".csv", index=False)
 
 
     end = time.time()
