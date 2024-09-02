@@ -64,7 +64,7 @@ if rank==rank:
     df_langevin_temp = pd.DataFrame(d_langevin)
 
     results_langevin = pd.concat([results_langevin, df_langevin_temp], ignore_index=True)
-    results_langevin.to_csv(r"/home/ks4n19/MNL_langevin_pytorch/output_data_3products/langevin_random_varTau/B200/results_langevin_"+str(rank+30)+"T"+str(max_T)+"B"+str(batch_size)+"Tau"+str(tau)+".csv", index=False)
+    results_langevin.to_csv(r"_".csv", index=False)
 
 
     end = time.time()
