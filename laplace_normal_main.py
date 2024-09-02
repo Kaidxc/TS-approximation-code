@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 import torch.nn as nn
 from mnl_env import MNLEnvironment
-from laplace_normal import TSLaplace_normal
+from ts_laplace.laplace_normal import TSLaplace_normal
 from tqdm import tqdm
 from mpi4py import MPI
 
@@ -68,6 +68,6 @@ if rank==rank:
     df_laplace_temp = pd.DataFrame(d_laplace)
 
     results_laplace = pd.concat([results_laplace, df_laplace_temp], ignore_index=True)
-    results_laplace.to_csv(r"/home/ks4n19/mnl_pytorch_code/coffee_data/laplace_normal/B10/results_laplace_"+str(rank)+"T"+str(max_T)+"B"+str(batch_size)+".csv", index=False)
+    results_laplace.to_csv(r"_".csv", index=False)
     
     end = time.time()
