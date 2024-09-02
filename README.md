@@ -1,4 +1,4 @@
 This repository includes the python sccripts that used for numerical expirements in Chapter 1:Priors' Impact on Thompson Sampling for Dynamic Pricing of Multiple Substitutable Products.
 1. mnl_model.py implements a Multinomial Logistic Demand Model using PyTorch, designed for modeling and estimating demand in pricing problems. provides methods for calculating choice probabilities, mean demand, and profit of products at specific prices, as well as methods for maximum likelihood estimation (MLE) and Langevin dynamics for parameter estimation.
 2. mnl_env.py provides an environment for simulating experiments based on the Multinomial Logistic Model (MNL). This environment is designed to interact with pricing algorithms, allowing users to test and evaluate various pricing strategies under uncertain demand conditions. The environment uses the MultipleMNLModel class to model the demand and simulate user choices based on prices set by the algorithm.
-The rest sc
+The rest 
