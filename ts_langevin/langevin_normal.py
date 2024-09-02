@@ -15,7 +15,7 @@ class TSLangevin_normal:
         M,
         
     ):
-        """Langevin Sampling for NonContextual Prices and Promotions Experiments
+        """Langevin Sampling using Langevin dynamics with normal prior
 
         Args:
             K (int): Number of products
@@ -49,7 +49,7 @@ class TSLangevin_normal:
         """What price to play at the current state of the environment
 
         Args:
-            env (Environment):
+            env (Environment): customer response
         
         Returns:
            prices and additional data
