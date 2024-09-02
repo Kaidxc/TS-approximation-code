@@ -13,7 +13,6 @@ class MultipleMNLModel:
 
             alphas (torch.tensor): Alpha parameters
             betas (torch.tensor): Beta parameters
-            gammas (torch.tensor): Gamma parameters
             el (float, optional): Lower bound of prices. Defaults to 0.
             u (float, optional): Upper bound of prices. Defaults to 40.
         """
@@ -24,11 +23,9 @@ class MultipleMNLModel:
         self.u = u
 
     def U_f(self, p):
-        """Utility function for products at specific prices and promotions
-
+        """Utility function for products at specific prices
         Args:
             p (torch.tensor): Prices
-
         Returns:
             torch.tensor: Utilities
         """
