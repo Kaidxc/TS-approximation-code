@@ -14,7 +14,7 @@ class ThompsonSamplingLaplace:
         mle_lr,
         mle_steps,
     ):
-        """Thompson Sampling for NonContextual Prices and Promotions Experiments
+        """Thompson Sampling with Laplace approximation with random initial exploration phase
 
         Args:
             tau (int): Number of initial exploration rounds
