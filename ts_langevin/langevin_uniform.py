@@ -15,7 +15,7 @@ class TSLangevin_uniform:
         M,
         
     ):
-        """Langevin Sampling for NonContextual Prices and Promotions Experiments
+        """Thompson sampling with Langevin dynamics using uniform prior
 
         Args:
             K (int): Number of products
@@ -49,7 +49,7 @@ class TSLangevin_uniform:
         """What price to play at the current state of the environment
 
         Args:
-            env (Environment):
+            env (Environment): customer response
         
         Returns:
            prices and additional data
