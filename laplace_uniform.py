@@ -14,7 +14,7 @@ class TSLaplace_uniform:
         mle_steps,
         M,
     ):
-        """
+        """Thompson Sampling with Laplace approximation with uniform prior
         Args:
             tau (int): Number of initial exploration rounds
             exploration_rate (float): Multipicative factor on the normal distribution variance
