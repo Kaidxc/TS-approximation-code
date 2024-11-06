@@ -31,8 +31,8 @@ if rank==rank:
     regularization_factor_mle = 1
     mle_lr = 0.1
     mle_steps = 100
-    l = 0
-    u = 30
+    l = 0 # lower bound of price
+    u = 30 # upper bound of price
     #----------------------------------------------------------------------------
     alphas_input = np.ones(n_products)
     betas_input = np.array([0.1,0.2,0.3])
