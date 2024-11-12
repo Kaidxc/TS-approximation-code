@@ -53,7 +53,10 @@ class TSLaplace_normal:
         Returns:
            optimal action (price), and additional data
         """
-        
+        data = {
+            "alpha_bar": self.alpha_post,
+            "beta_bar": self.beta_post,
+        }
         def hessian_for_sample(model, p):
             q = model.mean_demand(p).unsqueeze(1)
             mult = torch.cat([torch.ones(self.K), -p]).unsqueeze(0)
@@ -68,7 +71,6 @@ class TSLaplace_normal:
             )
             
             p = model_post.max_mean_demand_price()
-            data = {}
         else:
             
             if (env.t - self.batch_size) % self.batch_size == 0:
@@ -114,6 +116,9 @@ class TSLaplace_normal:
                 
                 self.alpha_post = theta_post[: self.K]
                 self.beta_post = theta_post[self.K :]
+                data = {
+                    "alpha_bar": self.alpha_post,
+                    "beta_bar": self.beta_post,}
 
             model_post = MultipleMNLModel(
                 self.alpha_post,
@@ -122,10 +127,7 @@ class TSLaplace_normal:
             
             p = model_post.max_mean_demand_price()
             self.H += hessian_for_sample(self.model_bar, p)
-            data = {
-                "alpha_bar": self.theta_bar[: self.K],
-                "beta_bar": self.theta_bar[self.K : ],
-            }
+            
             if self.last_grad is not None:
                 data["last_grad"] = self.last_grad     
         
