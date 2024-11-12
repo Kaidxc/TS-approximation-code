@@ -54,6 +54,10 @@ class TSLangevin_uniform:
         Returns:
            prices and additional data
         """
+        data = {
+            "alpha_bar": self.alpha_bar,
+            "beta_bar": self.beta_bar,
+        }
         if env.t < self.batch_size:
             model_bar = MultipleMNLModel(
                 self.alpha_post,
@@ -61,8 +65,6 @@ class TSLangevin_uniform:
             )
             
             p = model_bar.max_mean_demand_price()
-            data = {}
-            
         else:
             if (env.t - self.batch_size) % self.batch_size == 0:
                 
@@ -86,12 +88,10 @@ class TSLangevin_uniform:
                     self.alpha_bar,
                     self.beta_bar,
                 )
+                data = {
+                    "alpha_bar": self.alpha_bar,
+                    "beta_bar": self.beta_bar,
+                }
             p = self.model_bar.max_mean_demand_price()
             
-            data = {
-                "alpha_bar": self.alpha_bar,
-                "beta_bar": self.beta_bar,
-            }
-            
-
         return p, data# addtional_information
