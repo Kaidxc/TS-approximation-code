@@ -59,7 +59,10 @@ class TSLaplace_uniform:
             H_A = torch.diag(-q[:, 0]) + q.matmul(q.T)
             H_A_repeat = H_A.repeat(2, 2)
             return -(mult * H_A_repeat) * mult.T
-        
+        data = {
+            "alpha_bar": self.alpha_post,
+            "beta_bar": self.beta_post,
+        }
         if env.t < self.batch_size:
             model_post = MultipleMNLModel(
                 self.alpha_post,
@@ -67,7 +70,7 @@ class TSLaplace_uniform:
             )
             
             p = model_post.max_mean_demand_price()
-            data = {}
+            
         else:
             
             if (env.t - self.batch_size) % self.batch_size == 0:
@@ -113,6 +116,10 @@ class TSLaplace_uniform:
                 
                 self.alpha_post = theta_post[: self.K]
                 self.beta_post = theta_post[self.K :]
+                data = {
+                "alpha_bar": self.theta_bar[: self.K],
+                "beta_bar": self.theta_bar[self.K : ],}
+            
 
             model_post = MultipleMNLModel(
                 self.alpha_post,
@@ -121,10 +128,7 @@ class TSLaplace_uniform:
             
             p = model_post.max_mean_demand_price()
             self.H += hessian_for_sample(self.model_bar, p)
-            data = {
-                "alpha_bar": self.theta_bar[: self.K],
-                "beta_bar": self.theta_bar[self.K : ],
-            }
+            
             if self.last_grad is not None:
                 data["last_grad"] = self.last_grad     
         
